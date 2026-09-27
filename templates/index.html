@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Welcome</h1>
+  <p class="muted">Create an account or log back in to see your details and uploaded file.</p>
+  <a class="btn" href="{{ url_for('register') }}">Register</a>
+  <a class="btn secondary" href="{{ url_for('login') }}">Log in</a>
+{% endblock %}

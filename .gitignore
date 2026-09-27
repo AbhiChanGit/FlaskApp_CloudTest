@@ -1,0 +1,4 @@
+users.db
+uploads/
+__pycache__/
+*.pem

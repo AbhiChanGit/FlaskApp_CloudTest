@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+  <h1>Hello, {{ user.firstname }}</h1>
+  <table>
+    <tr><th>Username</th><td>{{ user.username }}</td></tr>
+    <tr><th>First name</th><td>{{ user.firstname }}</td></tr>
+    <tr><th>Last name</th><td>{{ user.lastname }}</td></tr>
+    <tr><th>Email</th><td>{{ user.email }}</td></tr>
+    <tr><th>Address</th><td>{{ user.address }}</td></tr>
+  </table>
+
+  <h2 style="margin-top:28px;font-size:1.15rem">Uploaded file</h2>
+  {% if user.filename %}
+    <p class="muted">{{ user.original_filename }}</p>
+    <div class="stat">{{ user.word_count }}</div>
+    <div class="muted">words</div>
+    <a class="btn" href="{{ url_for('download') }}">Download file</a>
+  {% else %}
+    <p class="muted">No file uploaded yet.</p>
+  {% endif %}
+
+  <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" style="margin-top:20px">
+    <label for="file">{{ 'Replace' if user.filename else 'Upload' }} file (.txt)</label>
+    <input id="file" name="file" type="file" accept=".txt" required>
+    <button class="btn secondary" type="submit">Upload</button>
+  </form>
+{% endblock %}
